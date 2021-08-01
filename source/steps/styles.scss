@@ -1,0 +1,74 @@
+
+@import '../../variables';
+
+.steps-container {
+    display: block;
+    margin-top: 24px;
+
+    & > .steps {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        & > .steps-item {
+            position: relative;
+            width: auto;
+            margin: 0 16px;
+            text-align: center;
+            color: $grey;
+
+            &.isActive {
+                & > .item-title {
+                    font-weight: bold;
+                }
+            }
+
+            &.isCompleted {
+                color: $purple;
+
+                & > .item-circle {
+                    background-color: $purple;
+                    color: $white;
+                    border-color: $white;
+
+                    @include svg-glyph-color($white);
+                }
+            }
+
+            & > .item-circle {
+                display: inline-block;
+                width: 32px;
+                height: 32px;
+                line-height: 32px;
+                font-size: 20px;
+                border-radius: 16px;
+                border: 1px solid $grey;
+            }
+
+            & > .item-title {
+                position: absolute;
+                display: inline-block;
+                width: auto;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%,calc(100% + 8px));
+                white-space: nowrap;
+            }
+        }
+
+        & > .steps-line {
+            flex: 1;
+            height: 1px;
+            border-top: 1px solid $grey;
+
+            &.isCompleted {
+                border-color: $purple;
+            }
+        }
+    }
+
+    & > .steps-content {
+        margin-top: 48px;
+    }
+}

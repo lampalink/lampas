@@ -1,0 +1,60 @@
+
+@import '../../variables';
+
+.toggle {
+    &-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        & > .toggle-option {
+            display: inline-flex;
+            align-items: center;
+
+            width: auto;
+            padding: 0 24px;
+            line-height: 40px;
+            font-size: 14px;
+            cursor: pointer;
+            color: $grey;
+            border: 1px solid $nearly-white;
+
+            white-space: nowrap;
+
+            &:first-of-type {
+                border-bottom-left-radius: 20px;
+                border-top-left-radius: 20px;
+            }
+
+            &:last-of-type {
+                border-bottom-right-radius: 20px;
+                border-top-right-radius: 20px;
+            }
+
+            &.isActive {
+                color: $white;
+                background-color: $purple;
+                border-color: $purple;
+            }
+
+            &.isDisabled {
+                background-color: $almost-white;
+                cursor: not-allowed;
+            }
+        }
+
+        &.mode-outline {
+            & > .toggle-option {
+                &.isActive {
+                    color: $purple;
+                    background-color: $white;
+                    border-color: $purple;
+                }
+
+                & > .toggle-option-checkbox {
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}

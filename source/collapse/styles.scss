@@ -1,0 +1,13 @@
+
+@import '../../variables';
+
+.collapse-container {
+    display: none;
+    height: 0;
+    transition: height .6s linear;
+
+    &.isCollapsed {
+        display: block;
+        height: auto;
+    }
+}

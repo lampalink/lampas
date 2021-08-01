@@ -1,0 +1,54 @@
+
+@import '../../variables';
+
+@mixin form-item-status($statusColor) {
+    & > .form-item-status {
+        color: $statusColor;
+    }
+}
+
+.form {
+    &-container {}
+
+    &-item {
+        display: flex;
+        flex-direction: column;
+
+        &.inline {
+            flex-direction: row;
+
+            & > .form-item-label {
+                flex: 1;
+                display: inline-block;
+                margin: 10px 0 12px 0;
+                transform: translate(0,25%);
+                font-weight:bold;
+            }
+
+            & > .form-item-content {
+                flex: 5;
+                display: inline-block;
+            }
+        }
+
+        &.status-default {
+            @include form-item-status($grey);
+        }
+
+        &.status-error {
+            @include form-item-status($red);
+        }
+
+        &-label {
+            height: auto;
+            margin: 4px 0 0 0;
+           // color: $grey;
+            font-weight: bold;
+        }
+
+        &-content {
+            height: auto;
+            margin: 10px 0 12px 0;
+        }
+    }
+}

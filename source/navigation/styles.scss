@@ -1,0 +1,89 @@
+
+@import '../../variables';
+
+$navigation_height: 52px;
+
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    // min-height: 100vh;
+    height: 100%;
+    max-width: 100vw;
+
+    & > .layout-navigation {
+        position: relative;
+        width: 100%;
+        z-index: 700;
+
+        &.isFixed {
+            position: fixed;
+            top: 0;
+
+            animation: fixed-menu-init .73s;
+            -moz-animation: fixed-menu-init .73s;
+            -webkit-animation: fixed-menu-init .73s;
+        }
+
+        &.transparentIfNotFixed:not(.isFixed) {
+            & > .layout-navigation-menu {
+                background-color: transparent;
+                box-shadow: none;
+            }
+        }
+
+        & > .layout-navigation-menu {
+            & > .layout-navigation-menu-space {
+                padding: 0;
+            }
+        }
+
+        & > .layout-navigation-hamburgermenu {
+            z-index: 1999;
+            position: absolute;
+            top: $navigation_height;
+            width: 100vw;
+            height: calc(100vh - #{$navigation_height});
+        }
+    }
+
+    & > .layout {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+
+        & > .layout-content {
+            flex: 1;
+            max-height: calc(100vh - #{$navigation_height});
+            margin: 0 48px 0 48px;
+
+            @media only screen and (max-width: 600px) {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@keyframes fixed-menu-init {
+    @for $i from 0 through 100 {
+        #{$i * 1%} {
+            transform: translate(0,#{(100 - $i) * -1%});
+        }
+    }
+}
+
+@-moz-keyframes fixed-menu-init {
+    @for $i from 0 through 100 {
+        #{$i * 1%} {
+            transform: translate(0,#{(100 - $i) * -1%});
+        }
+    }
+}
+
+// @-webkit-keyframes fixed-menu-init {
+//     @for $i from 0 through 100 {
+//         #{$i * 1%} {
+//             transform: translate(0,#{(100 - $i) * -1%});
+//         }
+//     }
+// }​

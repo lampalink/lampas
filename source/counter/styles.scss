@@ -1,0 +1,55 @@
+
+@import '../../variables';
+
+.counter {
+    &-container {
+        display: inline-block;
+        width: auto;
+        border-radius: 8px;
+        vertical-align: middle;
+        @include shadowBordered();
+
+        &.hasError {
+            box-shadow: 0 0 2px $red;
+        }
+    }
+
+    &-label {
+        @include no-selection();
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+        padding: 6px 16px;
+    }
+
+    &-changer {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+        padding: 6px 8px;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &.blue {
+            &:hover {
+                background-color: change-color($blue, $alpha: .05);
+            }
+        }
+        &.purple {
+            &:hover {
+                background-color: change-color($purple, $alpha: .05);
+            }
+        }
+
+        &.left {
+            border-right: 2px solid $almost-white;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        &.right {
+            border-left: 2px solid $almost-white;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+}

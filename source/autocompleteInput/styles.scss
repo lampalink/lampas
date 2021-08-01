@@ -1,0 +1,79 @@
+
+@import '../../variables';
+
+.autocomplete-input {
+    &-container {
+        position: relative;
+        display: inline-block;
+
+        &.hasError > .autocomplete-input {
+            border-color: $red;
+        }
+
+        &.fullWidth {
+            width: 100%;
+
+            & > .autocomplete-input {
+                width: 100%;
+
+                & > .autocomplete-input-text {
+                    width: 100%;
+                }
+            }
+        }
+        
+        & > .autocomplete-input {
+            display: inline-block;
+            // height: 40px;
+            border-radius: 8px;
+            border: 1px solid $bluish-white;
+
+            & > .autocomplete-input-text {
+                min-width: 270px;
+                display: inline-block;
+                padding: 0px 8px;
+                // margin: 6px 8px;
+                border: none;
+                background-color: transparent;
+                height: auto;
+                font-size: 16px;
+                line-height: 40px;
+
+                &::placeholder {
+                    color: rgba(104,96,120,1);
+                }
+            }
+        }
+    }
+
+    &-options {
+        z-index: 1000;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        max-height: 37vh;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        background-color: $white;
+
+        // @include shadowBordered();
+        // border: none;
+        @include lightBordered();
+        
+        & > .autocomplete-input-options-option {
+            height: auto;
+            font-size: 16px;
+            // padding: 4px 6px;
+            padding: 6px 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: $white;
+
+            &.isSelected {
+                background-color: $white-bluish;// change-color($purple, $alpha: .4);
+            }
+        }
+    }
+}

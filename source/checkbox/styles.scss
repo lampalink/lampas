@@ -1,0 +1,42 @@
+
+@import '../../variables';
+
+@mixin checkmark-color($color) {}
+
+.checkbox {
+    &-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: auto;
+        line-height: 140%;
+        //height: 18px;
+        // font-weight: bold;
+
+        &:not(.hasLabel) {
+            display: inline-block;
+            width: 18px;
+        }
+
+        &:not(.disabled) {
+            cursor: pointer;
+
+            & > .checkbox-label {
+                cursor: pointer;
+            }
+        }
+
+        &.hasError {
+            
+        }
+
+        &.grey { @include checkmark-color($grey); }
+        &.blue { @include checkmark-color($blue); }
+        &.purple { @include checkmark-color($purple); }
+
+        & > .checkbox-label {
+            flex: 1;
+            margin-left: 8px;
+        }
+    }
+}

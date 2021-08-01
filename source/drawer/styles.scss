@@ -1,0 +1,98 @@
+
+@import '../../variables';
+
+@keyframes background-color-transparency {
+    0% { background-color: change-color($grey, $alpha: 0); }
+    15% { background-color: change-color($grey, $alpha: .02); }
+    25% { background-color: change-color($grey, $alpha: .04); }
+    30% { background-color: change-color($grey, $alpha: .06); }
+    35% { background-color: change-color($grey, $alpha: .08); }
+    40% { background-color: change-color($grey, $alpha: .10); }
+    45% { background-color: change-color($grey, $alpha: .12); }
+    50% { background-color: change-color($grey, $alpha: .14); }
+    55% { background-color: change-color($grey, $alpha: .16); }
+    60% { background-color: change-color($grey, $alpha: .18); }
+    65% { background-color: change-color($grey, $alpha: .20); }
+    70% { background-color: change-color($grey, $alpha: .22); }
+    75% { background-color: change-color($grey, $alpha: .24); }
+    80% { background-color: change-color($grey, $alpha: .26); }
+    85% { background-color: change-color($grey, $alpha: .28); }
+    90% { background-color: change-color($grey, $alpha: .30); }
+    95% { background-color: change-color($grey, $alpha: .32); }
+    100% { background-color: change-color($grey, $alpha: .34); }
+}
+
+@keyframes appear-right {
+    0% { right: -100%; }
+    25% { right: -75%; }
+    35% { right: -65%; }
+    45% { right: -55%; }
+    50% { right: -50%; }
+    65% { right: -35%; }
+    75% { right: -25%; }
+    85% { right: -15%; }
+    95% { right: -5%; }
+    100% { right: 0; }
+}
+
+.drawer-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    // flex-direction: row;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(36,18,87,.2);
+
+    & > .drawer {
+        position: absolute;
+        top: 0;
+        animation: appear-right .74s linear;
+        animation-fill-mode: forwards;
+        display: flex;
+        flex-direction: column;
+        width: 74%;
+        height: 100%;
+        max-height: 100vh;
+        background-color: $white;
+
+        & > .drawer-header {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            height: auto;
+            padding: 24px 24px 24px calc(48px + 2rem);
+            border-bottom:1px solid $bluish-white;
+
+            & > .drawer-header-close {
+                position: absolute;
+                top: 24px;
+                right: 24px;
+            }
+        }
+    
+        & > .drawer-content {
+            position: relative;
+            flex: 1;
+            padding: 24px;
+            overflow-y: scroll;
+
+            & > .drawer-content-loader-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255,255,255,.45);
+
+                & > .drawer-content-loader {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,71 @@
+
+@import '../../variables';
+
+.pagination-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    & > .pagination-total {
+        flex: 1;
+        margin-right: 12px;
+        text-align: right;
+        color: $grey;
+    }
+
+    & > .pagination-page-size {
+        width: auto;
+        margin-left: 12px;
+    }
+
+    & > .pagination {
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        & > .pagination-page,
+        & > .pagination-previous,
+        & > .pagination-next {
+            display: inline-block;
+            font-size: 14px;
+            line-height: 14px;
+            margin-bottom: 0;
+            
+            & > .pagination-link {
+                padding: 8px 12px;
+                background-color: $white;
+                border: 1px solid $nearly-white;
+                border-radius: 4px;
+                cursor: pointer;
+                outline: none;
+            }
+        }
+
+        & > .pagination-page {
+            margin-left: 4px;
+            margin-right: 4px;
+
+            &.active > .pagination-link {
+                color: $purple;
+                border-color: $purple;
+            }
+        }
+
+        & > .pagination-previous,
+        & > .pagination-next {
+            &.disabled > .pagination-link {
+                color: $grey;
+                cursor: not-allowed;
+            }
+        }
+
+        & > .pagination-previous {
+            margin-right: 4px;
+        }
+
+        & > .pagination-next {
+            margin-left: 4px;
+        }
+    }
+}

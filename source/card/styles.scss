@@ -1,0 +1,49 @@
+
+@import '../../variables';
+
+
+
+.card {
+    &-container {
+        margin: 0 0 16px 0;
+        &:not(.noBorder) {
+         //   @include shadowBordered();
+        }
+
+        display: inline-block;
+        border-radius: 8px;
+
+        &.clickable {
+            cursor: pointer;
+        }
+
+        &.noPadding {
+            & > .card-header,
+            & > .card-content > .card-content-body {
+                padding: 0;
+            }
+        }
+
+        & > .card-header {
+            padding: 16px 16px 8px 16px;
+            border-bottom: 1px solid $almost-white;
+        }
+
+        & > .card-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+
+            & > .card-content-body {
+                flex: 1;
+                padding: 32px 32px 0 32px;
+                white-space: pre-wrap;
+            }
+
+            & > .card-content-meta {
+                height: auto;
+                padding: 0 32px 32px 32px;
+            }
+        }
+    }
+}

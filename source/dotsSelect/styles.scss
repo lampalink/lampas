@@ -1,0 +1,64 @@
+
+@import '../../variables';
+
+@mixin color-days-of-week($color) {
+    & > .dots-select-option {
+        @include svg-glyph-color($color);
+
+        color: $color;
+
+        &:hover {
+            background-color: change-color($color, $alpha: .05);
+        }
+
+        &.isActive {
+            @include svg-glyph-color($white);
+
+            background-color: $color;
+            color: $white;
+            border-color: change-color($color, $alpha: 0);
+            box-shadow: 0 0 2px $color;
+        }
+    }
+}
+
+.dots-select {
+    &-container {
+        height: auto;
+
+        @include color-days-of-week($blue);
+        &.blue { @include color-days-of-week($blue); }
+        &.purple { @include color-days-of-week($purple); }
+
+        &.small {
+            & > .dots-select-option {
+                height: 1.6rem;
+                width: 1.6rem;
+                margin: 0 2px;
+                font-size: .8rem;
+            }
+        }
+
+        & > .dots-select-option {
+            position: relative;
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            margin: 0 4px;
+            text-align: center;
+            vertical-align: middle;
+            border-radius: 50%;
+            border: 1px solid $almost-white;
+            cursor: pointer;
+
+            & > .label {
+                @include no-selection();
+                position: absolute;
+                display: inline;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+        }
+    }
+}

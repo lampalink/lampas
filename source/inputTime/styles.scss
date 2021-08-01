@@ -1,0 +1,110 @@
+
+@import '../../variables';
+
+@mixin time-input() {
+    margin: 0;
+    border: none;
+    height: 1rem;
+    width: 2rem;
+    padding: 4px 0 4px 0;
+
+    font-size: 1rem;
+    line-height: 1rem;
+    display: inline-block;
+    background-color: transparent;
+    outline: none;
+    color: $grey;
+    text-align: center;
+}
+
+@mixin input-time-item() {
+    display: inline-block;
+    flex: 1;
+    width: 100%;
+    padding: 8px 8px;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    caret-color: $purple;
+
+    &:focus {
+        background-color: $bluish-white;
+        @include shadowBordered();
+    }
+}
+
+.input-time {
+    &-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 40px;
+        padding: 0 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(225,233,245,1);
+        background-color: $white;
+
+        & > .input-time-hours {
+            @include input-time-item();
+        }
+
+        & > .input-time-minutes {
+            @include input-time-item();
+        }
+
+        & > .input-time-divider {
+            display: inline-block;
+            width: auto;
+            margin: 0 4px;
+            font-size: 18px;
+        }
+
+        & > .input-time-modifier {
+            display: inline-block;
+            width: auto;
+            margin-left: 8px;
+
+            & > .input-time-modifier-arrow {}
+        }
+    }
+}
+
+
+
+
+
+// .input-time-old {
+//     &-container {
+//         @include shadowBordered();
+
+//         display: flex;
+//         flex-direction: row;
+//         align-items: center;
+//         background-color: $white;
+//         border-radius: 8px;
+//         padding: 3px 4px;
+
+//         & > .input-time-hours {
+//             @include time-input();
+//         }
+    
+//         & > .input-time-divider {
+//             display: inline-block;
+//             height: auto;
+//             width: auto;
+//         }
+
+//         & > .input-time-minutes {
+//             @include time-input();
+//         }
+
+//         & > .input-time-ampm {
+//             display: inline-block;
+//             height: auto;
+//             width: auto;
+//         }
+//     }
+// }

@@ -1,0 +1,17 @@
+
+@import '../../variables';
+
+.link-container {
+    color: $purple;
+    text-decoration: none;
+    cursor: pointer;
+
+    & a {
+        outline: none;
+        border: none;
+    }
+
+    &:hover {
+        color: change-color($purple, $alpha: .74);
+    }
+}

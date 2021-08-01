@@ -1,0 +1,99 @@
+
+@import '../../variables.scss';
+
+@mixin search-select-options-color($color) {
+    & > .search-select-option {
+        &:hover {
+            background-color: change-color($color, $alpha: .05);
+        }
+
+        &.isActive {
+            background-color: change-color($color, $alpha: .1);
+        }
+    }
+}
+
+@mixin search-select-color($color) {
+    color: $color;
+
+    & > .search-select-control {
+        &:last-of-type {
+            @include svg-glyph-color($color);
+        }
+    }
+}
+
+.search-select {
+    &-container {
+        @include shadowBordered();
+
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        min-width: 164px;
+        border-radius: 20px;
+        padding: 0;
+        cursor: pointer;
+        background-color: $white;
+
+        &.fullWidth {
+            width: 100%;
+        }
+
+        &.transparent {
+            background-color: transparent;
+            border: 1px solid transparent;
+            box-shadow: none;
+        }
+
+        @include search-select-color($blue);
+        &.blue { @include search-select-color($blue); }
+        &.purple { @include search-select-color($purple); }
+
+        & > .search-select-input {
+            border: none;
+            flex: 1;
+            display: inline-block;
+            color: $grey;
+            padding: 8px 0 8px 14px;
+            font-size: 1rem;
+            line-height: 1rem;
+            height: 1rem;
+        }
+    }
+
+    &-options {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        background-color: transparent;
+        border-radius: 20px;
+        border-top-left-radius: 0px;
+        color: $grey;
+
+        @include search-select-options-color($blue);
+        &.blue { @include search-select-options-color($blue); }
+        &.purple { @include search-select-options-color($purple); }
+
+        & > .search-select-option {
+            display: inline-block;
+            width: auto;
+            color: $grey;
+            padding: 8px 14px;
+            word-break: keep-all;
+            overflow-wrap: normal;
+            cursor: pointer;
+
+            &:first-of-type {
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+            }
+
+            &:last-of-type {
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+        }
+    }
+}

@@ -1,0 +1,202 @@
+
+@import '../../variables';
+
+@mixin button-color($color, $textColor) {
+    background-color: $color;
+    border-color: $color;
+
+    @include svg-glyph-color($textColor);
+
+    &:not(.nonReactive):hover {
+        background-color: change-color($color, $alpha: .93);
+    }
+
+    &.ghost {
+        background-color: transparent;
+        border-color: transparent;
+
+        @include svg-glyph-color($color);
+
+        &:not(.nonReactive):hover {
+            background-color: change-color($color, $alpha: .1);
+        }
+
+        & > .button-text {
+            color: $color;
+        }
+    }
+
+    &.outline {
+        background-color: transparent;
+        border-color: $color;
+
+        @include svg-glyph-color($color);
+
+        &:not(.nonReactive):hover {
+            background-color: change-color($color, $alpha: .1);
+        }
+
+        & > .button-text {
+            color: $color;
+        }
+    }
+
+    &.secondary {
+        background-color: change-color($color, $alpha: .1);
+        border-color: transparent;
+
+        @include svg-glyph-color($color);
+
+        &:not(.nonReactive):hover {
+            background-color: change-color($color, $alpha: .15);
+        }
+
+        & > .button-text {
+            color: $color;
+        }
+    }
+
+    &.link {
+        background-color: transparent;
+        border-color: transparent;
+        margin-right:10px;
+        line-height:100%;
+
+        @include svg-glyph-color($color);
+
+        &:not(.nonReactive):hover {
+            background-color: transparent;
+        }
+
+        & > .button-text {
+            color:$color;
+        }
+    }
+
+    & > .button-text {
+        color: $textColor;
+    }
+}
+
+@mixin button-size($padding, $text-size, $height: null) {
+    &:not(.link) {
+        height: $height;
+    }
+
+    & > .button {
+        padding: $padding;
+        line-height: $text-size;
+
+        & > .button-text {
+            font-size: $text-size;
+        }
+    }
+}
+
+.button {
+    &-icon {
+        width: auto;
+
+        &:not(.noMargin) {
+            margin-right: 7px;
+        }
+
+        &.right {
+            margin-right: 0;
+            margin-left: 7px;
+        }
+    }
+
+    &-group-container {
+        & > .button-container {
+            &:first-of-type {
+                & > .button {
+                    border-top-left-radius: 8px;
+                    border-bottom-left-radius: 8px;
+                }
+            }
+
+            &:last-of-type {
+                & > .button {
+                    border-top-right-radius: 8px;
+                    border-bottom-right-radius: 8px;
+                    border-right-width: 1px;
+                }
+            }
+
+            & > .button {
+                margin: 0;
+                border-radius: 0px;
+                border-right-width: 0;
+            }
+        }
+    }
+
+    &-container {
+        display: inline-block;
+
+        @include button-size(0px 24px, 16px);
+        &.default { @include button-size(0px 24px, 16px, 48px); }
+        &.small { @include button-size(6px 12px, 12px); }
+        &.kinda-small { @include button-size(8px 12px, 14px, 32px); }
+        &.big { @include button-size(12px 24px, 20px, 48px); }
+
+        &.fullWidth {
+            display: block;
+
+            & > .button {
+                width: 100%;
+            }
+        }
+
+
+        &.disabled {
+            opacity: .45;
+
+            & > .button {
+                cursor: not-allowed;
+            }
+        }
+
+        &.circle {
+            & > .button {
+                border-radius: 50%;
+                padding: 6px 6px;
+            }
+        }
+
+        & > .button {
+            display: flex;
+            flex-direction: row;
+            line-height: 48px;
+            align-items: center;
+            margin: 0 2px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            font-family: GilroySemibold;
+            outline: none;
+            text-decoration: none;
+            //font-family: Proxima;
+            //font-weight: bold;
+
+            & > .button-text {
+                flex: 1;
+            }
+
+            &.link {
+                padding: 0;
+                margin: 0;
+            }
+
+            @include button-color($purple, $almost-white);
+            &.grey { @include button-color($grey, $almost-white); }
+            &.blue { @include button-color($blue, $almost-white); }
+            &.green { @include button-color($green, $almost-white); }
+            &.red { @include button-color($red, $almost-white); }
+            &.yellow { @include button-color($yellow, $white); }
+            &.orange { @include button-color($orange, $white); }
+            &.purple { @include button-color($purple, $white); }
+            &.white { @include button-color($white, $purple); }
+        }
+    }
+}

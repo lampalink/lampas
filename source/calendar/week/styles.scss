@@ -1,0 +1,179 @@
+
+@import '../../../variables';
+
+.week-calendar {
+    &-container {
+        position: relative;
+        width: 100%;
+
+        &.vertical {
+            & > .week-calendar-legend {
+                flex-direction: column;
+                width: 100%;
+
+                & > .week-calendar-legend-item {
+                    flex-direction: row;
+                    height: auto;
+
+                    &:last-of-type {
+                        border-bottom-left-radius: 4px;
+                        border-bottom-right-radius: 4px;
+                    }
+
+                    & > .label {
+                        top: 30%;
+                        transform: translate(0,-100%);
+                    }
+                }
+            }
+
+            & > .week-calendar-days {
+                position: absolute;
+                top: 0;
+                flex-direction: row;
+
+                & > .week-calendar-days-day {
+                    min-width: 64px;
+
+                    & > .week-calendar-days-items {
+                        flex-direction: column;
+                        // align-items: center;
+                        align-items: flex-end;
+
+                        & > .items-weekend-background,
+                        & > .items-hoverable-background {
+                            width: calc(100% - 2px);
+                            border-top-left-radius: 8px;
+                            border-top-right-radius: 8px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.horizontal {
+            max-width: 100vw;
+            margin-top: calc(24px - 1.2em);
+            padding-top: 1.2em;
+            overflow-x: scroll;
+
+            & > .week-calendar-legend {
+                flex-direction: row;
+                height: calc(100% - 24px);
+
+                & > .week-calendar-legend-item {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: baseline;
+                    width: auto;
+
+                    & > .label {
+                        position: relative;
+                        padding-left: 12px;
+
+                        &::before {
+                            content: ' ';
+                            position: absolute;
+                            top: 50%;
+                            left: 0;
+                            height: 12px;
+                            border-left: 1px solid $almost-white;
+                        }
+                    }
+                }
+            }
+
+            & > .week-calendar-days {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+
+                & > .week-calendar-days-day {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    width: 100%;
+                    min-height: 72px;
+
+                    & > .week-calendar-days-date {
+                        display: inline-block;
+                    }
+
+                    & > .week-calendar-days-items {
+                        flex-direction: row;
+                        align-items: flex-end;
+
+                        & > .items-weekend-background,
+                        & > .items-hoverable-background {
+                            height: 100%;
+                            width: calc(100% - 2px);
+                            border-radius: 8px;
+                        }
+                    }
+                }
+            }
+        }
+
+        & > .week-calendar-legend {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+
+            & > .week-calendar-legend-item {
+                position: relative;
+                display: flex;
+                box-shadow: 0 -1px 2px change-color($nearly-white, $alpha: .5);
+
+                & > .label {
+                    position: absolute;
+                    height: auto;
+                    font-size: 0.9em;
+                    left: 0;
+                    color: $grey;
+                    text-align: center;
+                }
+            }
+        }
+
+        & > .week-calendar-days {
+            display: flex;
+            border-left: 1px solid $white-bluish;
+
+            & > .week-calendar-days-day {
+                position: relative;
+                flex: 1;
+
+                & > .week-calendar-days-date {
+                    color: $grey;
+                    text-align: center;
+                    font-size: 0.9em;
+                }
+
+                & > .week-calendar-days-items {
+                    display: flex;
+
+                    & > .items-weekend-background {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        background-color: change-color($grey, $alpha: .05);
+                        border: none;
+                    }
+
+                    & > .items-hoverable-background {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        border: none;
+
+                        &.isActive {
+                            cursor: pointer;
+                            border: 1px dashed $purple; // change-color($purple, $alpha: .5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

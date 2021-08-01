@@ -1,0 +1,34 @@
+
+@import '../../variables';
+
+.rich-textarea-container {
+    min-height: 36px;
+
+    border-radius: 18px;
+    border: 1px solid rgba(225,233,245,1);
+
+    &.readonly {
+        border: none;
+
+        &.allowEdit {
+            cursor: pointer !important;
+
+            &:hover {
+                background-color: change-color($color: $purple, $alpha: .03);
+            }
+        }
+    }
+
+    & > .rich-textarea-editor {
+        flex: 1;
+
+        & > .rich-text-editor-draft {
+            // height: 100%;
+            padding: calc((36px - 1em) / 2);
+        }
+
+        // height: 100%;
+        // display: flex;
+        // flex-direction: column;
+    }
+}

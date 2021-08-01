@@ -1,0 +1,73 @@
+
+@import '../../../variables';
+
+.lightbox-container {
+    z-index: 2000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: change-color($grey, $alpha: .57);
+
+    & > .lightbox-active-image {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        & > .lightbox-image-line {
+            display: inline-flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: center;
+
+            & > .lightbox-image {
+                max-width: calc(90vw - 128px);
+                max-height: calc(90vh - 128px);
+                margin-left: 36px;
+            }
+
+            & > .lightbox-close-stripe {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                width: 36px;
+
+                & > .lightbox-close {
+                    margin-top: 4px;
+
+                    @include svg-glyph-color($white);
+                }
+            }
+        }
+    }
+
+    & > .lightbox-minimap {
+        height: 128px;
+        max-width: 90vw;
+        overflow: scroll;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        & > .minimap-image {
+            max-height: 112px;
+            max-width: 112px;
+            margin: 0 8px;
+            cursor: pointer;
+
+            &:hover {
+                box-shadow: 0 0 6px $white;
+            }
+
+            &.isActive {
+                box-shadow: 0 0 6px $purple;
+            }
+        }
+    }
+}

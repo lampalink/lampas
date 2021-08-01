@@ -1,0 +1,91 @@
+
+
+
+$bluish-white: rgba(230,230,246,1);
+$white-bluish: rgba(247,247,252,.77);
+$nearly-white: rgba(216,216,216,1);
+$almost-white: rgba(247,247,252,1);
+$blue-whitish: rgb(3, 3, 5);
+$white: rgba(255,255,255,1);
+// $green: rgba(116,222,171,1);
+$greenLight: rgba(223,255,229,1);
+// $green: rgba(61,151,120,1);
+$green: rgba(110,199,126,1);
+$greenDark: rgba(70,172,88,1);
+$greenDarker: rgba(19,121,37,1);
+$redLight: rgba(255,110,110,.15);
+$red: rgba(255,110,110,1);
+$redDark: rgba(209,44,30,1);
+//$red: rgba(239,130,131,1);
+$blue: rgba(66,50,204,1);
+
+$purpleLight: rgba(147,110,221,1);
+$purpleSemiLight: rgba(117,72,209,1);
+// $purple: rgba(92,38,201,1);
+$purple: rgba(114,0,218,1);
+$purpleSemiDark: rgba(68,13,179,1);
+$purpleDark: rgba(51,10,135,1);
+
+//$blue: rgba(63,73,255,1);
+//$blue: rgba(62,81,245,1);
+// $yellow: rgba(240,215,114,1);
+$yellow: rgba(255,213,98,1);
+$orange: rgba(245,149,35,1);
+$grey-slightly-darker: rgba(100,100,100,1);
+
+$grey-slightly-darker-opacity: rgba(100,100,100,.1);
+//$grey: rgba(129,129,129,1);
+$grey: rgba(125,116,139,1);
+$grey-semi-transparent: rgba(129,129,129,.5);
+$blue-dark: rgba(18,13,32,1);
+$text: rgba(38,24,62,1);
+$black: rgba(0,0,0,1);
+
+@mixin shadowBordered {
+    -webkit-box-shadow: 0px 4px 8px 0px $grey-slightly-darker-opacity;
+    -moz-box-shadow: 0px 4px 8px 0px $grey-slightly-darker-opacity;
+    box-shadow: 0px 4px 8px 0px $grey-slightly-darker-opacity;
+    // border: 1px solid $almost-white;
+}
+
+@mixin bordered {
+    border: 1px solid $grey-semi-transparent;
+}
+
+@mixin lightBordered {
+    border: 1px solid rgba(225,233,245,1);
+}
+
+@mixin svg-glyph-color($color, $secondaryColor: $white) {
+    & .svg-filling {
+        &.stroke {
+            stroke: $color;
+        }
+
+        &.fill {
+            fill: $color;
+        }
+
+        &.stroke-secondary {
+            stroke: $secondaryColor;
+        }
+
+        &.fill-secondary {
+            fill: $secondaryColor;
+        }
+
+        &.semi-stroke {
+            stroke: change-color($color, $alpha: .2);
+        }
+
+        &.semi-fill {
+            fill: change-color($color, $alpha: .2);
+        }
+    }
+}
+
+@mixin no-selection() {
+    &::selection {
+        background-color: transparent;
+    }
+}

@@ -1,0 +1,37 @@
+
+@import '../../variables';
+
+@mixin status-box-color($color) {
+    color: $color;
+    border-color: $color;
+}
+
+.status-box {
+    &-container {
+        display: inline-block;
+        margin: 0 2px;
+        padding: 3px 5px 3px 5px;
+        font-size: 16px;
+        color: $grey;
+        border: 1px solid $grey;
+        border-radius: 3px;
+        cursor: default;
+
+        &.noBorder {
+            border: none;
+        }
+
+        &.small {
+            padding: 2px 3px 2px 3px;
+            font-size: 14px;
+        }
+
+        &.grey   { @include status-box-color($grey); }
+        &.white  { @include status-box-color($white); }
+        &.purple { @include status-box-color($purple); }
+        &.blue   { @include status-box-color($blue); }
+        &.green  { @include status-box-color($green); }
+        &.red    { @include status-box-color($red); }
+        &.yellow { @include status-box-color($yellow); }
+    }
+}

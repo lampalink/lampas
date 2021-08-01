@@ -1,0 +1,81 @@
+
+@import '../../variables';
+
+.rich-text-editor {
+    &-container {
+        &:not(.noBorder) {
+            @include shadowBordered();
+        }
+
+        &.readonly > .rich-text-editor-controls {
+            display: none;
+
+            & > .rich-text-editor-draft {
+                cursor: default;
+            }
+        }
+
+        & > .rich-text-editor-controls {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 0;
+            // background-color: $white;
+            background-color: transparent;
+            //font-family: Proxima;
+            padding: 8px 12px 8px 0;
+
+            & > .controls-divider {
+                display: inline-block;
+                height: 1rem;
+                width: 0;
+                border-right-width: 1px;
+                border-right-style: solid;
+                border-right-color: $nearly-white;
+                margin: 0 4px;
+            }
+        }
+
+        & > .rich-text-editor-draft {
+            display: block;
+            //min-height: 4rem;
+            margin: 0;
+            padding: 0;
+            cursor: text;
+
+            & > .DraftEditor-root {
+                font-size: 1em;
+                line-height: 1.2em;
+
+                &, & * {
+                   // font-family: Proxima;
+                }
+
+                display: block;
+                margin: 0;
+                //adding-top: 24px;
+
+                // background-color: $white;
+                background-color: transparent;
+
+                & > .public-DraftEditorPlaceholder-root {
+                    position: absolute;
+                }
+
+                & > .DraftEditor-editorContainer {
+                    z-index: inherit;
+                }
+
+                & .public-DraftStyleDefault-ol,
+                & .public-DraftStyleDefault-ul {
+                    margin: 0 0 12px 0;
+                }
+
+                & .rich-text-editor-link {
+                    color: $purple;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

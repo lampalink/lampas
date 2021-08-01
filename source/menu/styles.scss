@@ -1,0 +1,130 @@
+
+@import '../../variables';
+
+$menu_height: 52px;
+
+@mixin menu-item() {
+    position: relative;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: default;
+    color: $text;
+
+    &.isActive {
+        color: $purple;
+
+        & > .menu-item > .item-icon {
+            @include svg-glyph-color($purple);
+        }
+    }
+
+    &.isStretched {
+        flex: 1;
+    }
+
+    &:not(.isDisabled):hover {
+        cursor: pointer;
+        background-color: $white-bluish;
+    }
+
+    & > .menu-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        &:not(.isWrapEnabled) {
+            white-space: nowrap;
+        }
+
+        & > .item-icon {
+            margin-right: 12px;
+
+            @include svg-glyph-color($text);
+        }
+
+        & > .item-dropdown-icon {
+            margin-left: 8px;
+
+            @include svg-glyph-color($grey-semi-transparent);
+        }
+    }
+}
+
+@mixin menu-item-submenu() {
+    display: none;
+    flex-direction: column;
+    background-color: $white;
+
+    &.isActive {
+        display: flex;
+    }
+
+    &.isRightAligned {
+        left: inherit;
+        right: 0;
+    }
+
+    &.isFloating {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(100%,0);
+        // min-width: 100%;
+
+        @include shadowBordered();
+    }
+
+    & > .menu-item-container {
+        height: $menu_height;
+        
+        @include menu-item();
+    }
+}
+
+.menu-container {
+    background-color: $white;
+    display: flex;
+    flex-direction: row;
+    height: $menu_height;
+    align-items: center;
+
+    @include shadowBordered();
+
+    &.vertical {
+        flex-direction: column;
+        height: auto;
+        align-items: stretch;
+
+        & > .menu-item-container {
+            height: auto;
+            width: calc(100% - 32px);
+            min-height: $menu_height;
+        }
+
+        & > .menu-item-submenu {
+            -webkit-box-shadow: 0px 0px 8px 0px inset $grey-slightly-darker-opacity;
+            -moz-box-shadow: 0px 0px 8px 0px inset $grey-slightly-darker-opacity;
+            box-shadow: 0px 0px 8px 0px inset $grey-slightly-darker-opacity;
+
+            @include menu-item-submenu();
+        }
+    }
+
+    & > .menu-item-container {
+        height: 100%;
+
+        @include menu-item();
+
+        & > .menu-item-submenu {
+            position: absolute;
+            top: $menu_height;
+            left: 0;
+            min-width: 100%;
+
+            @include menu-item-submenu();
+            @include shadowBordered();
+        }
+    }
+}

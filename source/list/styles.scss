@@ -1,0 +1,68 @@
+
+@import '../../variables';
+
+@mixin list-theme($color, $background-color, $background-color-hover, $background-color-active) {
+    color: $color;
+
+    &.hoverable > .list-item:hover {
+        background-color: $background-color-hover;
+    }
+
+    & > .list-header {
+        background-color: $background-color;
+    }
+
+    & > .list-item {
+        background-color: $background-color;
+
+        &.isActive {
+            background-color: $background-color-active;
+        }
+    }
+}
+
+.list {
+    &-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        &.white {
+            @include list-theme($white, $white, rgba(255,255,255,.5), rgba(255,255,255,.5));
+        }
+
+        &.purple {
+            @include list-theme($purple, $white, change-color($purple, $alpha: .5), change-color($purple, $alpha: .5));
+
+            &.darkBackground {
+                @include list-theme($white, $purple, rgba(255,255,255,.5), rgba(255,255,255,.5));
+            }
+        }
+
+        &.blue {
+            @include list-theme($blue, $white, change-color($blue, $alpha: .5), change-color($blue, $alpha: .5));
+
+            &.darkBackground {
+                @include list-theme($white, $blue, rgba(255,255,255,.5), rgba(255,255,255,.5));
+            }
+        }
+
+        &.hoverable > .list-item:hover {
+            cursor: pointer;
+        }
+    }
+
+    &-header {
+        height: auto;
+        margin-top: 2px;
+        padding: 15px;
+    }
+
+    &-item {
+        height: auto;
+        margin-top: 2px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}

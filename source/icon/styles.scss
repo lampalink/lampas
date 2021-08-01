@@ -1,0 +1,62 @@
+
+@import '../../variables';
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@mixin inifiniteRotation($speed) {
+    -webkit-animation: spin $speed linear infinite;
+    -moz-animation: spin $speed linear infinite;
+    animation: spin $speed linear infinite;
+}
+
+.icon {
+    &-container {
+        display: inline-block;
+        vertical-align: middle;
+
+        &.hoverable {
+            cursor: pointer;
+        }
+
+        &.isDraggable {
+            cursor: grab;
+        }
+
+        &.isRotating > .icon-glyph {
+            @include inifiniteRotation(1.25s);
+        }
+
+        @include svg-glyph-color($grey);
+        &.black { @include svg-glyph-color($black); }
+        &.white { @include svg-glyph-color($white); }
+        &.grey { @include svg-glyph-color($grey); }
+        &.blue { @include svg-glyph-color($blue); }
+        &.blue-whitish { @include svg-glyph-color($blue-whitish); }
+        &.purple { @include svg-glyph-color($purple); }
+        &.red { @include svg-glyph-color($red); }
+        &.green { @include svg-glyph-color($green); }
+        &.yellow { @include svg-glyph-color($yellow); }
+        &.transparent { @include svg-glyph-color(rgba(255,255,255,0)); }
+
+        & > .icon-glyph {
+            display: block;
+        }
+    }
+}

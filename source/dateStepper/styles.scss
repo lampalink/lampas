@@ -1,0 +1,76 @@
+
+@import '../../variables';
+
+.date-stepper-container {
+    display: inline-flex;
+    flex-direction: row;
+    height: 48px;
+    align-items: center;
+    justify-content: stretch;
+    border: 1px solid rgba(225,233,245,1);
+    border-radius: 8px;
+    font-size: 16px;
+
+    &.small {
+        height: 40px;
+        font-size: .9em;
+
+        & > .date-stepper-previous,
+        & > .date-stepper-next {
+            padding: 0 10px;
+        }
+
+        & > .date-stepper-selected-container {
+            padding: 0 8px;
+        }
+    }
+
+    & > .date-stepper-previous {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+        padding: 0 18px;
+        border-right: 1px solid rgba(225,233,245,1);
+        cursor: pointer;
+
+        @include svg-glyph-color($purple);
+
+        &:hover {
+            background-color: change-color($purple, $alpha: .05);
+        }
+    }
+
+    & > .date-stepper-selected-container {
+        padding: 0 12px;
+
+        & > .date-stepper-selected {
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            height: 100%;
+            cursor: pointer;
+
+            & > .selected-today {
+                margin-left: 8px;
+                color: $grey;
+            }
+        }
+    }
+
+    & > .date-stepper-next {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+        padding: 0 18px;
+        border-left: 1px solid rgba(225,233,245,1);
+        cursor: pointer;
+
+        @include svg-glyph-color($purple);
+
+        &:hover {
+            background-color: change-color($purple, $alpha: .05);
+        }
+    }
+}

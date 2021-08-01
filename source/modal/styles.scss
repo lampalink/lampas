@@ -1,0 +1,50 @@
+
+@import '../../variables';
+
+
+.modal {
+    &-overlay {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100%;
+        left: 0;
+        overflow-y: auto;
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        z-index: 20;
+        background-color: rgba(36,18,87,.2);
+    }
+
+    &-container {
+        overflow: hidden;
+        position: relative;
+        width: 768px;
+        max-width: 100vw;
+        border-radius: 20px;
+        background: #fff !important;
+        top: 7vh;
+        // left: 50vw;
+        // transform: translate(-50%,0);
+
+        & > .modal-ribbon-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(0,-100%);
+            width: 100%;
+        }
+
+        & > .modal-close-container {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+
+            & > .modal-close {
+                display: inline;
+            }
+        }
+    }
+}

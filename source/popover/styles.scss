@@ -1,0 +1,39 @@
+
+@import '../../variables';
+
+.popover {
+    &-container {
+        position: relative;
+        width: auto;
+
+        &:not(.disableHover):hover > .overlay {
+            display: flex;
+        }
+
+        &.isOpened > .overlay {
+            display: flex;
+        }
+
+        & > .trigger {
+            display: inline-block;
+            width: 100%;
+        }
+
+        & > .overlay {
+            z-index: 2000;
+            position: absolute;
+            left: 0;
+            display: none;
+            flex-direction: column;
+            margin-top: 1px;
+            height: auto;
+            background-color: $white;
+            border-radius: 8px;
+
+            &:not(.noBorder) {
+                // @include shadowBordered();
+                @include lightBordered();
+            }
+        }
+    }
+}

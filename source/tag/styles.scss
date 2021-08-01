@@ -1,0 +1,41 @@
+
+@import '../../variables';
+
+@mixin tag-color($color, $bgColor) {
+    color: $color;
+    background-color: $bgColor;
+}
+
+.tag {
+    &-container{
+        display: inline-block;
+        align-items: center;
+        margin: 2px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-weight: bold;
+
+        @include tag-color($grey, $almost-white);
+        &.grey { @include tag-color($grey, $almost-white); }
+        &.purple { @include tag-color($purple, change-color($purple, $alpha: .15)); }
+        &.green { @include tag-color($green, $greenLight); }
+        &.red { @include tag-color($red, $redLight); }
+
+        &.small {
+            padding: 0 8px;
+            line-height: 32px;
+
+            & > .tag-close {
+                margin-left: 6px;
+            }
+        }
+
+        &.clickable {
+            cursor: pointer;
+        }
+
+        & > .tag-close {
+            margin-left: 12px;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+
+@import '../../../variables';
+
+.agenda-list-container {
+    display: flex;
+    flex-direction: column;
+
+    & > .agenda-list-date {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 12px;
+        padding: 24px;
+
+        & > .date-header {
+            font-size: 20px;
+            line-height: 32px;
+            color: $grey;
+        }
+
+        & > .date-items {
+            display: flex;
+            flex-direction: column;
+
+            & > .date-item {
+                display: flex;
+                flex-direction: row;
+                padding: 12px;
+                margin: 4px 0;
+
+                &.clickable {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

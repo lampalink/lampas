@@ -1,0 +1,31 @@
+
+@import '../../variables';
+
+.textarea-container {
+    min-width: 280px;
+    width: auto;
+    padding: 8px 12px;
+    border: 1px solid rgba(225,233,245,1);
+    border-radius: 8px;
+
+    font-size: 16px;
+    line-height: 24px;
+
+    &::placeholder {
+        color: rgba(128,124,137,1);
+    }
+
+    background-color: $white;
+    &.transparent {
+        background-color: transparent;
+    }
+
+    &.hasError {
+        border-color: $red;
+    }
+
+    &.fluid {
+        min-width: 1px;
+        width: calc(100% - 24px);
+    }
+}

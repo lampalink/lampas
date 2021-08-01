@@ -1,0 +1,19 @@
+
+@import '../../variables';
+
+.tour-dialog {
+    max-width: initial !important;
+    background-color: $purple !important;
+    color: $white !important;
+    padding: 48px !important;
+
+    & > button {
+        width: 14px;
+        height: 14px;
+        color: $white;
+
+        &:hover {
+            color: $grey;
+        }
+    }
+}
