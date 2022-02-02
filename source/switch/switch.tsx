@@ -1,6 +1,6 @@
 
 import * as React from 'react'
-import * as cx from 'classnames'
+import cx from 'classnames'
 import * as _ from 'lodash'
 
 import './styles.scss'

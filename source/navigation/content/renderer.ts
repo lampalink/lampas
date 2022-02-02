@@ -9,7 +9,7 @@ import {
     get,
     isArray,
 } from 'lodash'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 import {
     NavigationItemType,
@@ -85,6 +85,8 @@ export const NavigationRenderer = ({ items, fallbackRedirectPath, ...rest }: Nav
             rest.items.map(item => item as NavigationItem<{}, {}, NavigationItemType.module>) : []
 
         switch (type) {
+        case NavigationItemType.divider:
+            return null
         case NavigationItemType.module:
             return renderModule({ type, ...rest } as NavigationItem<{}, {}, NavigationItemType.module>, index)
         case NavigationItemType.group:

@@ -33,6 +33,7 @@
         &.grey { @include checkmark-color($grey); }
         &.blue { @include checkmark-color($blue); }
         &.purple { @include checkmark-color($purple); }
+        &.red { @include checkmark-color($red); }
 
         & > .checkbox-label {
             flex: 1;

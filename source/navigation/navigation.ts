@@ -1,6 +1,7 @@
 
 import {
     ReactNode,
+    FunctionComponent,
     createElement,
     useEffect,
     useState,
@@ -13,7 +14,9 @@ import {
     get,
     merge,
 } from 'lodash'
-import * as cx from 'classnames'
+import cx from 'classnames'
+
+import './navigation.scss'
 
 import { Icon } from '../icon'
 import { Menu, MenuItem } from '../menu'
@@ -35,7 +38,7 @@ export interface BeSpecificOrDieProps extends RouteComponentProps {
     items: NavigationItem<{}, {}>[]
 }
 
-export const beSpecificOrDie = <Props extends BeSpecificOrDieProps>(Component: React.FunctionComponent<Props>) => {
+export const beSpecificOrDie = <Props extends BeSpecificOrDieProps>(Component: FunctionComponent<Props>) => {
     return ({ items, ...rest }: Props) => {
         const { resolveWithRoot } = useNavigationController(rest)
 
@@ -197,7 +200,7 @@ export const LayoutNavigation = beSpecificOrDie(<RenderContext extends RenderCon
         const menuItems = !isArray(item.items) ? [] :
             item.items
                 .map((childItem: NavigationItem, childIndex: number) => {
-                    if (navigationController.doesMatchRealWithRoot(childItem.path)) {
+                    if (childItem.type !== NavigationItemType.divider && navigationController.doesMatchRealWithRoot(childItem.path)) {
                         isActive = true
                     }
 
@@ -233,6 +236,13 @@ export const LayoutNavigation = beSpecificOrDie(<RenderContext extends RenderCon
         ]))
     }
 
+    const renderMenuDivider = (item: NavigationItem, index: number) => {
+        return createElement('div', {
+            key: `${index}-divider-${item.tid}`,
+            className: cx('navigation-menu-item-divider', item?.itemClassName),
+        }, item?.title)
+    }
+
     const renderNavigationItem = (item: NavigationItem, index: number) => {
         if (
             (typeof item.shouldDisplay === 'function' && !item.shouldDisplay(context))
@@ -246,6 +256,8 @@ export const LayoutNavigation = beSpecificOrDie(<RenderContext extends RenderCon
             return renderMenuItem(item, index)
         case NavigationItemType.group:
             return renderMenuGroup(item, index)
+        case NavigationItemType.divider:
+            return renderMenuDivider(item, index)
         default:
             return null
         }

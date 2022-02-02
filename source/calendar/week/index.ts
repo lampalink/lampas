@@ -6,7 +6,7 @@ import {
     max,
     get,
 } from 'lodash'
-import * as cx from 'classnames'
+import cx from 'classnames'
 import * as moment from 'moment'
 
 import './styles.scss'
@@ -59,9 +59,45 @@ export const WeekCalendar = <T extends WeekCalendarItem>({
 
     const [ rangeStart, setRangeStart ] = useState(defaultRangeStart)
     const [ rangeEnd, setRangeEnd ] = useState(defaultRangeEnd)
+
+    const isItemWithin = (anchor: Date, item: T, range: 'day'|'week' = 'day') => {
+        const anchorMoment = moment(anchor)
+        const startEpoch = moment(item.start).unix()
+
+        return (
+            startEpoch >= anchorMoment.clone().startOf(range).unix()
+            && startEpoch <= anchorMoment.clone().endOf(range).unix()
+        )
+    }
+
     useEffect(() => {
         setRangeStart(defaultRangeStart)
         setRangeEnd(defaultRangeEnd)
+
+        for (const item of (isArray(items) ? items : []).filter(item =>
+            isItemWithin(anchor, item, 'week'))) {
+            const startHours = moment(item.start).hours()
+            const endHours = moment(item.end).hours()
+
+            let newRangeStart
+            if (moment(rangeStart).hours() > startHours) {
+                newRangeStart = moment(rangeStart).hours(startHours).toDate()
+            }
+
+            if (moment(rangeEnd).hours() < endHours) {
+                let newRangeEnd = moment(rangeEnd).hours(endHours).toDate()
+
+                if (newRangeEnd.getHours() <= (newRangeStart || rangeStart).getHours()) {
+                    newRangeEnd = moment(rangeEnd).hours(23).toDate()
+                }
+
+                setRangeEnd(newRangeEnd)
+            }
+
+            if (newRangeStart) {
+                setRangeStart(newRangeStart)
+            }
+        }
     }, [anchor, items])
 
     const containerElement = useRef<HTMLDivElement>()
@@ -112,10 +148,10 @@ export const WeekCalendar = <T extends WeekCalendarItem>({
 
     const renderLegend = () => {
         const items = []
-        const stropHours = moment(rangeEnd).hours()
+        let endHours = moment(rangeEnd).hours()
 
         let cursor = moment(rangeStart).clone()
-        while (cursor.hours() <= stropHours) {
+        while (cursor.hours() <= endHours && cursor.hours() !== 0) {
             items.push(cursor.format('HH:00'))
             cursor = cursor.clone().add(1, 'hour')
         }
@@ -258,23 +294,7 @@ export const WeekCalendar = <T extends WeekCalendarItem>({
         const weedayIndex = anchorMoment.days()
         const isWeekend = weedayIndex % 6 === 0
 
-        const dayItems = (isArray(items) ? items : []).filter(item => {
-            // TODO: move setRangeStart from render function into effect function
-            if (moment(rangeStart).hours() > moment(item.start).hours()) {
-                setRangeStart(moment(item.start).toDate())
-            }
-
-            // TODO: move setRangeEnd from render function into effect function
-            if (moment(rangeEnd).hours() < moment(item.end).hours()) {
-                setRangeEnd(moment(item.end).toDate())
-            }
-
-            const startEpoch = moment(item.start).unix()
-            return (
-                startEpoch >= anchorMoment.clone().startOf('day').unix()
-                && startEpoch <= anchorMoment.clone().endOf('day').unix()
-            )
-        })
+        const dayItems = (isArray(items) ? items : []).filter(item => isItemWithin(anchor, item, 'day'))
 
         const style: CSSProperties = {}
         switch (mode) {

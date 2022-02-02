@@ -1,8 +1,13 @@
 
 import { DeepPartial } from 'ts-essentials'
-import { createElement, useState } from 'react'
+import {
+    ChangeEventHandler,
+    FocusEventHandler,
+    createElement,
+    useState,
+} from 'react'
 import * as _ from 'lodash'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 import './styles.scss'
 
@@ -28,7 +33,7 @@ export const Textarea = ({
     value, placeholder, name, id, fluid, transparent, readonly, autoFocus, hasError, containerClassName,
     onChange, onFocus, onBlur,
 }: TextareaProps) => {
-    const handleChange: React.ChangeEventHandler<HTMLTextAreaElement> = event => {
+    const handleChange: ChangeEventHandler<HTMLTextAreaElement> = event => {
         event.preventDefault()
         event.stopPropagation()
 
@@ -39,7 +44,7 @@ export const Textarea = ({
 
     const [ isActive, setIsActive ] = useState(false)
 
-    const handleFocus: React.FocusEventHandler<HTMLTextAreaElement> = event => {
+    const handleFocus: FocusEventHandler<HTMLTextAreaElement> = event => {
         event.preventDefault()
         event.stopPropagation()
 
@@ -52,7 +57,7 @@ export const Textarea = ({
         }
     }
 
-    const handleBlur: React.FocusEventHandler<HTMLTextAreaElement> = event => {
+    const handleBlur: FocusEventHandler<HTMLTextAreaElement> = event => {
         event.preventDefault()
         event.stopPropagation()
 

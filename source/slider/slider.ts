@@ -1,9 +1,10 @@
 
 import {
+    ChangeEventHandler,
     createElement,
     useState,
 } from 'react'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 export interface SliderProps {
     value: number
@@ -14,7 +15,7 @@ export interface SliderProps {
 }
 
 export const Slider = ({ value, minValue, maxValue, precision, onChange }: SliderProps) => {
-    const handleChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+    const handleChange: ChangeEventHandler<HTMLInputElement> = event => {
         if (typeof onChange === 'function') {
             onChange(Number(event.target.value))
         }

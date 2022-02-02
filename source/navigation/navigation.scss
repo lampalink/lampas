@@ -1,0 +1,27 @@
+
+@import '../../variables';
+
+.layout-navigation-menu > .navigation-menu-item-divider {
+    // height: 100%;
+    // border-right: 1px solid $grey;
+}
+
+.layout-navigation-hamburgermenu > .navigation-menu-item-divider {
+    // border-bottom: 1px solid $grey;
+}
+
+.layout-navigation-menu > .menu-item-container > .menu-item-submenu > .navigation-menu-item-divider {
+    width: 100%;
+    padding: 8px 16px;
+    border-bottom: 1px solid $almost-white;
+    font-size: 78%;
+    font-weight: bold;
+}
+
+.layout-navigation-hamburgermenu > .menu-item-submenu > .navigation-menu-item-divider {
+    width: 100%;
+    padding: 8px 16px;
+    border-bottom: 1px solid $almost-white;
+    font-size: 78%;
+    font-weight: bold;
+}

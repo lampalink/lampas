@@ -23,6 +23,7 @@ export enum NavigationItemType {
     module = 'module',
     group = 'group',
     action = 'action',
+    divider = 'divider',
 }
 
 export interface Linkable<Params extends object = {}> {
@@ -113,6 +114,15 @@ export const createNavigationAction = <Params extends object, Context extends ob
         options,
         Content,
         NavigationItemType.action,
+    )
+
+export const createNavigationDivider = <Params extends object, Context extends object>(
+    options: NavigationItemOptions<Params, Context>,
+): NavigationItem<Params, Context, NavigationItemType.divider> =>
+    createNavigationItem<Params, Context, NavigationItemType.divider>(
+        options,
+        null,
+        NavigationItemType.divider,
     )
 
 export const extractGenericItems = (items: NavigationItem[]): NavigationItem<{}, {}, NavigationItemType.generic>[] => {

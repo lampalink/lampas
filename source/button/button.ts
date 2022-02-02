@@ -1,27 +1,37 @@
 
-import { createElement } from 'react'
-import * as cx from 'classnames'
+import {
+    createElement,
+    ButtonHTMLAttributes,
+    MouseEventHandler,
+    ReactNode,
+    CSSProperties,
+    MutableRefObject,
+    MouseEvent,
+} from 'react'
+import cx from 'classnames'
 
 import './styles.scss'
 
 import { Icon, GlyphName } from '../icon'
 import { useNavigationController } from '../navigation'
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement|HTMLLinkElement> {
     color?: 'blue'|'green'|'red'|'grey'|'yellow'|'orange'|'purple'|'white'
     mode?: 'primary'|'secondary'|'ghost'|'link'|'outline'
     shape?: 'circle'
     size?: 'big'|'small'|'kinda-small'
-    icon?: GlyphName|React.ReactNode
+    className?: string
+    icon?: GlyphName|ReactNode
     iconRight?: GlyphName
     fullWidth?: boolean
     disabled?: boolean
     nonReactive?: boolean
     containerClassName?: string
-    containerStyle?: React.CSSProperties
-    containerRef?: React.MutableRefObject<HTMLDivElement>
+    containerStyle?: CSSProperties
+    containerRef?: MutableRefObject<HTMLDivElement>
     link?: string
-    onClick?(event: React.MouseEvent<HTMLButtonElement, MouseEvent>)
+    children?: ReactNode
+    onClick?: MouseEventHandler<HTMLButtonElement|HTMLLinkElement>
 }
 
 export const Button = ({ mode, shape, size, color, icon, iconRight, fullWidth, disabled, nonReactive, containerClassName, className, containerStyle, containerRef, link, onClick, children, ...rest }: ButtonProps) => {
@@ -38,7 +48,7 @@ export const Button = ({ mode, shape, size, color, icon, iconRight, fullWidth, d
         break
     }
 
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const handleClick = (event: MouseEvent<HTMLButtonElement|HTMLLinkElement, MouseEvent>) => {
         if (disabled) {
             return
         }
@@ -48,7 +58,7 @@ export const Button = ({ mode, shape, size, color, icon, iconRight, fullWidth, d
         }
 
         if (typeof onClick === 'function') {
-            onClick(event)
+            onClick(event as any)
         }
     }
 

@@ -1,7 +1,7 @@
 
 import * as React from 'react'
 import * as _ from 'lodash'
-import * as cx from 'classnames'
+import cx from 'classnames'
 import * as moment from 'moment'
 
 import './styles.scss'

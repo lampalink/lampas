@@ -9,7 +9,7 @@ import {
     useEffect,
     useState,
 } from 'react'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 import { lightboxContext } from './lightbox/context'
 

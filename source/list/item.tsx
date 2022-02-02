@@ -1,6 +1,6 @@
 
 import * as React from 'react'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 export interface ItemProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
     isActive?: boolean

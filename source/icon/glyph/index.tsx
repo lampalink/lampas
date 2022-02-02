@@ -1,9 +1,9 @@
 
 import * as React from 'react'
 import * as _ from 'lodash'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
-export interface GlyphProps extends React.SVGAttributes<SVGElement> {
+export interface GlyphProps extends React.SVGAttributes<SVGSVGElement> {
     width: any // number|string
     height: any // number|string
 }
@@ -22,7 +22,7 @@ export const Glyph = ({ width, height, ...rest }: GlyphProps) => {
     )
 }
 
-export const withGlyph = (renderGlyph: () => JSX.Element, svgAttributes: React.SVGAttributes<SVGElement> = {}) => {
+export const withGlyph = (renderGlyph: () => JSX.Element, svgAttributes: React.SVGAttributes<SVGSVGElement> = {}) => {
     return ({ color, ...rest }: GlyphProps) =>
         <Glyph {...rest} {...svgAttributes}>{renderGlyph()}</Glyph>
 }

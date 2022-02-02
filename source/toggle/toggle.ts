@@ -1,7 +1,7 @@
 
-import { createElement, Fragment } from 'react'
+import { createElement, Fragment, ReactNode, CSSProperties } from 'react'
 import * as _ from 'lodash'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 import './styles.scss'
 
@@ -9,9 +9,9 @@ import { Checkbox } from '../checkbox'
 
 interface Option {
     value: string|number
-    text: React.ReactNode
+    text: ReactNode
     disabled?: boolean
-    style?: React.CSSProperties
+    style?: CSSProperties
 }
 
 export interface ToggleProps {

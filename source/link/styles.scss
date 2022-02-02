@@ -11,7 +11,16 @@
         border: none;
     }
 
-    &:hover {
+    &:not(.easeColor):hover {
+        color: change-color($purple, $alpha: .74);
+    }
+
+    &.easeColor {
+        color: unset;
+        transition: color ease 1s;
+    }
+
+    &.easeColor:hover {
         color: change-color($purple, $alpha: .74);
     }
 }

@@ -3,10 +3,11 @@ import {
     ReactNode,
     createElement,
     Fragment,
+    useState,
 } from 'react'
 import { Route, RouteComponentProps } from 'react-router-dom'
 import * as _ from 'lodash'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 import {
     LayoutNavigation,
@@ -24,6 +25,8 @@ export interface LayoutProps<RenderContext extends {}> extends RouteComponentPro
 }
 
 export const Layout = <RenderContext extends {}>({ context, navigation, fallbackRedirectPath, renderFullscreen }: LayoutProps<RenderContext>) => {
+    const [ history, setHistory ] = useState<string[]>([])
+
     let content: ReactNode
     if (typeof renderFullscreen !== 'function' || (content = renderFullscreen()) === null) {
         content = createElement(Fragment, {}, [
@@ -50,7 +53,7 @@ export const Layout = <RenderContext extends {}>({ context, navigation, fallback
     }
 
     return provideNavigationContext(
-        context,
+        context, history, setHistory,
         createElement('div', { className: cx('layout-container') }, content),
     )
 }

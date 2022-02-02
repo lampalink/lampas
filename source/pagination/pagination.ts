@@ -1,6 +1,6 @@
 
 import { createElement, CSSProperties, ReactNode } from 'react'
-import * as cx from 'classnames'
+import cx from 'classnames'
 import Paginate from 'react-paginate'
 
 import { Pagination } from '../../utils'

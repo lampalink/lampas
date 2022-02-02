@@ -26,6 +26,7 @@ export {
     createNavigationAction,
     createNavigationGroup,
     createNavigationModule,
+    createNavigationDivider,
     Layout,
     LayoutProps,
 } from './source/navigation'
@@ -35,6 +36,7 @@ export { AddressAutocomplete, AddressAutocompleteProps, GooglePlaceResultStatus 
 export { AgendaList, AgendaListProps } from './source/agenda'
 export { Artboard, ArtboardProps } from './source/artboard'
 export { AutocompleteInput, AutocompleteInputProps } from './source/autocompleteInput'
+export { AutocompleteSelect, AutocompleteSelectProps, AutocompleteSelectOption } from './source/autocompleteSelect'
 export { Breadcrumbs, BreadcrumbsProps, BreadcrumbItem, BreadcrumbItemProps } from './source/breadcrumbs'
 export { Button, ButtonProps, ButtonGroup, ButtonGroupProps } from './source/button'
 export { Calendar, CalendarProps, YearCalendar, YearCalendarProps, MonthCalendar, MonthCalendarProps, WeekCalendar, WeekCalendarProps, WeekCalendarItem } from './source/calendar'
@@ -69,7 +71,7 @@ export { Slider, SliderProps } from './source/slider'
 export { StatusBox, StatusBoxProps } from './source/statusBox'
 export { Steps, StepsProps, Step, StepProps } from './source/steps'
 export { Switch, SwitchProps } from './source/switch'
-export { Table, TableProps } from './source/table'
+export { Table, TableProps, TableColumn } from './source/table'
 export { Tabs, TabsProps } from './source/tabs'
 export { Tag, TagProps } from './source/tag'
 export { Textarea, TextareaProps } from './source/textarea'

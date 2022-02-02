@@ -1,13 +1,13 @@
 
 import * as React from 'react'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 import './styles.scss'
 
 import { Icon } from '../icon'
 
 export interface CheckboxProps {
-    color?: 'grey'|'purple'|'blue'
+    color?: 'grey'|'purple'|'blue'|'red'
     size?: 'medium'|'big'
     checked?: boolean
     className?: string

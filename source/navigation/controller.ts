@@ -22,9 +22,12 @@ export const navigationContext = createContext<RenderContextBase>({
 export const useNavigationContext = <RenderContext extends RenderContextBase>() =>
     useContext<RenderContext>(navigationContext as any)
 
-export const provideNavigationContext = <RenderContext extends RenderContextBase>(context: Omit<RenderContext, 'history'|'appendHistory'>, children: ReactNode) => {
-    const [ history, setHistory ] = useState<string[]>([])
-
+export const provideNavigationContext = <RenderContext extends RenderContextBase>(
+    context: Omit<RenderContext, 'history'|'appendHistory'>,
+    history: string[],
+    setHistory: (history: string[]) => any,
+    children: ReactNode,
+) => {
     return createElement(navigationContext.Provider, {
         value: {
             ...context,

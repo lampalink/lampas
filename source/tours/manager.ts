@@ -25,7 +25,7 @@ import {
 } from 'lodash'
 import { Store, useStore } from '@mylampa/store'
 import Reactour, { ReactourStep, ReactourProps } from 'reactour'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 const ToursLSFlagPrefix = '_tourflag_'
 

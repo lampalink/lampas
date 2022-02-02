@@ -1,7 +1,7 @@
 
 import * as React from 'react'
 import * as _ from 'lodash'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 import './styles.scss'
 
@@ -56,6 +56,7 @@ import { DotsHorizontalGlyph } from './glyph/dotsHorizontal'
 import { DotsVerticalGlyph } from './glyph/dotsVertical'
 import { DocumentsGlyph } from './glyph/documents'
 import { EyeGlyph } from './glyph/eye'
+import { ExcelGlyph } from './glyph/excel'
 import { EmptyStateGlyph } from './glyph/emptyState'
 import { FeatherGlyph } from './glyph/feather'
 import { FolderGlyph } from './glyph/folder'
@@ -183,6 +184,7 @@ export type GlyphName =
     'dots-vertical'|
     'documents'|
     'eye'|
+    'excel'|
     'empty-state'|
     'feather'|
     'folder'|
@@ -313,6 +315,7 @@ const glyphs: {
     'dots-vertical': DotsVerticalGlyph,
     'filter': FilterGlyph,
     'eye': EyeGlyph,
+    'excel': ExcelGlyph,
     'empty-state': EmptyStateGlyph,
     'open': OpenGlyph,
     'graduate-hat': GraduateHatGlyph,

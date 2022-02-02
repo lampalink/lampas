@@ -5,7 +5,7 @@ import {
     useContext,
 } from 'react'
 import * as _ from 'lodash'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 export interface ItemContext {
     status: 'default'|'error'

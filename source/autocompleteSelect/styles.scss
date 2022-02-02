@@ -1,0 +1,62 @@
+
+@import '../../variables';
+
+.autocomplete-select-container {
+    & > .autocomplete-select__control {
+        border: 1px solid rgba(225,233,245,1);
+        border-radius: 8px;
+        box-shadow: none;
+        outline: none;
+        
+        &:hover {
+            border-color: rgba(225,233,245,1);
+            box-shadow: none;
+            outline: none;
+        }
+
+        & > .autocomplete-select__value-container {
+            min-height: 40px;
+
+            & > .autocomplete-select__placeholder {
+                font-size: 16px;
+                line-height: 16px;
+            }
+
+            & > .autocomplete-select__multi-value {
+                margin: 0 2px;
+
+                & > .autocomplete-select__multi-value__label {
+                    padding: 4px 3px 4px 6px;
+                    font-size: 16px;
+                    line-height: 16px;
+                }
+
+                & > .autocomplete-select__multi-value__remove {
+                    &:hover {
+                        background-color: change-color($purple, $alpha: .15);
+                        color: $purple;
+                    }
+                }
+            }
+        }
+
+        & > .autocomplete-select__indicators {
+            & > .autocomplete-select__indicator-separator {}
+
+            & > .autocomplete-select__indicator {
+                &.autocomplete-select__clear-indicator {}
+                &.autocomplete-select__dropdown-indicator {}
+            }
+        }
+    }
+
+    & > .autocomplete-select__menu {
+        & > .autocomplete-select__menu-list {
+            &.autocomplete-select__menu-list--is-multi {}
+
+            & > .autocomplete-select__option {
+                &.autocomplete-select__option--is-focused {}
+            }
+        }
+    }
+}

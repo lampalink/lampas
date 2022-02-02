@@ -1,7 +1,7 @@
 
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 import './styles.scss'
 

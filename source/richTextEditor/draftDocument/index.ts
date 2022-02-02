@@ -56,7 +56,7 @@ export interface DraftDocumentEditorProps {
 }
 
 export interface DraftDocumentHandlers {
-    handleKeyCommand(command: DraftEditorCommand, state: EditorState): HandleResult
+    handleKeyCommand(command: DraftEditorCommand, state: EditorState, eventTimeStamp: number): HandleResult
 
     handleBoldClick(event: ReactMouseEvent<HTMLButtonElement, MouseEvent>): void
     handleItalicClick(event: ReactMouseEvent<HTMLButtonElement, MouseEvent>): void
@@ -116,7 +116,7 @@ const createDraftDocument = (_options: DraftDocumentOptions): DraftDocument => {
     }
 
     const handlers: DraftDocumentHandlers = {
-        handleKeyCommand: (command: DraftEditorCommand, currentEditorState: EditorState): HandleResult => {
+        handleKeyCommand: (command: DraftEditorCommand, currentEditorState: EditorState, eventTimeStamp: number): HandleResult => {
             let editorState: EditorState
             if (editorState = RichUtils.handleKeyCommand(currentEditorState, command)) {
                 draftDocument.setEditorState(editorState)
@@ -210,9 +210,9 @@ const createDraftDocument = (_options: DraftDocumentOptions): DraftDocument => {
             return createElement(Editor, {
                 ...props, plugins,
                 blockRenderMap: blockRenderMap,
-                handleKeyCommand: draftDocument.handlers.handleKeyCommand,
+                handleKeyCommand: draftDocument.handlers.handleKeyCommand as any,
                 onChange: editorState =>
-                    draftDocument.setEditorState(editorState),
+                    draftDocument.setEditorState(editorState as any),
                 ref: (editorRef: Editor) => {
                     if (editorRef) {
                         editor = editorRef

@@ -1,13 +1,13 @@
 
 import * as React from 'react'
 import * as _ from 'lodash'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 import './styles.scss'
 
 import { Icon } from '../icon'
 
-interface Column<T> {
+export interface TableColumn<T> {
     key: string
     title?: React.ReactNode
     width?: number|string
@@ -16,7 +16,7 @@ interface Column<T> {
 }
 
 export interface TableProps<T> {
-    columns?: Column<T>[]
+    columns?: TableColumn<T>[]
     data?: T[]
     disableHeader?: boolean
     disableStripe?: boolean
@@ -24,16 +24,17 @@ export interface TableProps<T> {
     isLoading?: boolean
     containerClassName?: string
     containerStyle?: React.CSSProperties
-    renderEmptyState?: () => React.ReactNode
-    setRowClassName?: (row: T) => string
-    setRowStyle?: (row: T) => React.CSSProperties
+    renderEmptyState?(): React.ReactNode
+    setRowClassName?(row: T): string
+    setRowStyle?(row: T): React.CSSProperties
+    onCellClick?(column: TableColumn<T>, row: T)
 }
 
 export const Table = <T extends { key: string }>({
     columns, data,
     disableHeader, disableStripe, disableHover, isLoading,
     containerClassName, containerStyle,
-    renderEmptyState, setRowClassName, setRowStyle,
+    renderEmptyState, setRowClassName, setRowStyle, onCellClick,
 }: TableProps<T>) => {
     const hasRowClassName = typeof setRowClassName === 'function'
     const hasRowStyle = typeof setRowStyle === 'function'
@@ -55,6 +56,11 @@ export const Table = <T extends { key: string }>({
                                 undefined : column.width,
                             ...(hasRowStyle ?
                                 setRowStyle(item) : {}),
+                        }}
+                        onClick={() => {
+                            if (typeof onCellClick === 'function') {
+                                onCellClick(column, item)
+                            }
                         }}
                     >{typeof column.renderRow === 'function' && column.renderRow(item)}</td>)}
             </tr>

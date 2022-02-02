@@ -10,6 +10,7 @@ export {
     createNavigationAction,
     createNavigationGroup,
     createNavigationModule,
+    createNavigationDivider,
 } from './item'
 export {
     NavigationController,

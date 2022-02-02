@@ -12,7 +12,7 @@ import {
     isArray,
     groupBy,
 } from 'lodash'
-import * as cx from 'classnames'
+import cx from 'classnames'
 
 import './styles.scss'
 import { Icon } from '../icon'
